@@ -1,0 +1,11 @@
+RewriteEngine On
+
+# RewwriteCond : Condition de réeciture
+
+# !-d : Non existant en tant que répertoire
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# !-f : Non existant en tant que fichier
+RewriteCond %{REQUEST_FILENAME} !-f
+
+RewriteRule ^(.+)$ index.php [QSA,L]
