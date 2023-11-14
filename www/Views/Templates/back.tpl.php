@@ -6,5 +6,6 @@
 </head>
 <body>
 <h1>Template du back</h1>
+<?php include $this->view;?>
 </body>
 </html>

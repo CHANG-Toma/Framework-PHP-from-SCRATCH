@@ -2,8 +2,10 @@
 namespace App\Controllers;
 
 use App\Core\View;
+use App\Models\User;
+use App\Core;
 
-class Security{
+class Security extends DB{
 
     public function login(): void
     {

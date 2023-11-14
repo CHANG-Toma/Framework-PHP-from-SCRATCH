@@ -1,23 +1,36 @@
 <?php
-
 namespace App\Core;
 
-Class View
+class View
 {
-    private $template;
-    public function __construct($path, $layout)
+    private String $view;
+    private String $template;
+    public function __construct($view, $template = "back")
     {
-        if (file_exists("Views/" . $path . ".view.php")) {
-            $path = "Views/" . $path . ".view.php";
-            $this->template =  "Views/Templates/".$layout.".tpl.php";
+        $this->setView($view);
+        $this->setTemplate($template);
+    }
 
-        } else {
-            echo "pas de fichier";
+    public function setView($view): void
+    {
+        $view = "Views/".$view.".view.php";
+        if(!file_exists($view)){
+            die("la vue n'existe pas :".$view);
         }
+        $this->view = $view;
+    }
+
+    public function setTemplate($template): void
+    {
+        $template = "Views/Templates/".$template.".tpl.php";
+        if(!file_exists($template)){
+            die("le template n'existe pas :".$template);
+        }
+        $this->template = $template;
     }
 
     public function __destruct(){
         include $this->template;
     }
-}
 
+}
