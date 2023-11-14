@@ -1,6 +1,7 @@
 <?php
 namespace App\Models;
 use App\Core\DB;
+
 class User extends DB
 {
     private int $id;
