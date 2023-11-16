@@ -1,0 +1,20 @@
+/:
+  controller: Main
+  action: home
+
+/a-propos:
+  controller: Main
+  action: aboutUs
+
+/login:
+  controller: Security
+  action: login
+
+/logout:
+  controller: Security
+  action: logout
+
+/register:
+  controller: Security
+  action: register
+
