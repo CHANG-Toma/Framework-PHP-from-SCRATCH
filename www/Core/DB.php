@@ -14,7 +14,7 @@ class DB
     public function __construct()
     {
         $host = 'mariadb';
-        $db   = 'esgi';
+        $db   = 'esgii';
         $user = 'esgi';
         $pass = 'esgipwd';
         $charset = 'utf8mb4';
