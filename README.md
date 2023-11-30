@@ -1,12 +1,8 @@
-Projet de création d'un framework from scratch !
-   
-Adresse local phpMyAdmin : http://localhost:8181/
-   
-   
-    docker compose build
+# 3IW2-2023
 
+## Commandes Docker
+<code>docker compose build</code>
 
-    docker compose up
+<code>docker compose up</code>
 
-
-    docker down
+<code>docker down</code>

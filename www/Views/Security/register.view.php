@@ -1,20 +1,16 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Register</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
-</head>
-<body>
-<div class="container">
-    <div class="form register-form">
-        <h2>Inscription</h2>
-        <form action="register.php" method="post">
-            <input type="text" name="username" placeholder="Nom d'utilisateur" required>
-            <input type="email" name="email" placeholder="Adresse e-mail" required>
-            <input type="password" name="password" placeholder="Mot de passe" required>
-            <button type="submit">S'inscrire</button>
-        </form>
-    </div>
-</div>
-</body>
-</html>
+<form method="post">
+    <h2>Inscription</h2>
+    <label for="username">Nom d'utilisateur :</label>
+    <input type="text" id="username" name="username" required>
+
+    <label for="email">Adresse e-mail :</label>
+    <input type="email" id="email" name="email" required>
+
+    <label for="password">Mot de passe :</label>
+    <input type="password" id="password" name="password" required>
+
+    <label for="confirm_password">Confirmer le mot de passe :</label>
+    <input type="password" id="confirm_password" name="confirm_password" required>
+
+    <button type="submit">S'Inscrire</button>
+</form>

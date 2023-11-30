@@ -4,18 +4,18 @@ namespace App\Models;
 
 class User extends \App\Core\DB
 {
-    private int $id;
-    private string $firstname;
-    private string $lastname;
-    private string $email;
-    private string $pwd;
-    private int $status;
-    private bool $isDeleted;
+    protected int $id;
+    protected string $firstname;
+    protected string $lastname;
+    protected string $email;
+    protected string $pwd;
+    protected int $status;
+    protected bool $isDeleted;
 
     public function __construct()
     {
-        parent::__construct(); // Call the parent constructor
-        $this->table = 'user'; // Set the table name
+        parent::__construct();
+        $this->table = 'esgi_user';
     }
 
     // Getters and Setters
@@ -89,13 +89,5 @@ class User extends \App\Core\DB
         $this->isDeleted = $isDeleted;
     }
 
-    protected function getData(): array
-    {
-        return [
-            'firstname' => $this->getFirstname(),
-            'lastname' => $this->getLastname(),
-            'email' => $this->getEmail(),
-            'pwd' => $this->getPwd(),
-        ];
-    }
+    
 }

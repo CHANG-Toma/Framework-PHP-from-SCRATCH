@@ -4,18 +4,16 @@ namespace App\Controllers;
 use App\Core\View;
 use App\Models\User;
 
-
 class Security{
 
     public function login(): void
     {
         $myUser = new User();
-        $myUser->setFirstname("YVEs");
+        $myUser->setFirstname("Yves");
         $myUser->setLastname("   SKrZypczYK    ");
         $myUser->setEmail("Y.skrzypczyk@gmail.com");
         $myUser->setPwd("Test1234");
-
-        $myUser->save();
+        $myUser->save(1);
 
         /*
         $myPage = new Page();

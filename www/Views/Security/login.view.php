@@ -1,14 +1,10 @@
+<form method="post">
+    <h2>Connexion</h2>
+    <label for="username">Nom d'utilisateur :</label>
+    <input type="text" id="username" name="username" required>
 
-<div class="container">
-    <div class="form-container">
-        <div class="form login-form">
-            <h2>Connexion</h2>
-            <form action="login.php" method="post">
-                <input type="text" name="username" placeholder="Nom d'utilisateur" required>
-                <input type="password" name="password" placeholder="Mot de passe" required>
-                <button type="submit">Se connecter</button>
-            </form>
-        </div>
-    </div>
-</div>
+    <label for="password">Mot de passe :</label>
+    <input type="password" id="password" name="password" required>
 
+    <button type="submit">Se Connecter</button>
+</form>

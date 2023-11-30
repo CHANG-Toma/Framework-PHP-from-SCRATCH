@@ -2,21 +2,21 @@
 
 namespace App\Core;
 
-    use PDO;
-    use PDOException;
+use PDO;
+use PDOException;
 
 class DB
 {
-    private $pdo;
-    private $table;
-    private $primaryKey = 'id';
+    protected $pdo;
+    protected $table;
+    protected $primaryKey = 'id';
 
     public function __construct()
     {
         $host = 'mariadb';
-        $db   = 'mydatabase';
-        $user = 'user';
-        $pass = 'password';
+        $db   = 'esgi';
+        $user = 'esgi';
+        $pass = 'esgipwd';
         $charset = 'utf8mb4';
 
         $dsn = "mysql:host=$host;dbname=$db;charset=$charset";
@@ -25,6 +25,7 @@ class DB
             PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
             PDO::ATTR_EMULATE_PREPARES => false,
         ];
+
         try {
             $this->pdo = new PDO($dsn, $user, $pass, $options);
         } catch (PDOException $e) {
@@ -32,11 +33,24 @@ class DB
         }
     }
 
-    public function save(): void
+    public function save(?int $id = null): void
     {
         $data = $this->getData();
 
-        print_r($data);
+        if ($id === null) {
+            $keys = array_keys($data);
+            $columns = implode(', ', $keys);
+            $placeholders = ':' . implode(', :', $keys);
+            $sql = "INSERT INTO {$this->table} ($columns) VALUES ($placeholders)";
+        } else {
+            $set = implode(', ', array_map(fn($key) => "$key = :$key", array_keys($data)));
+            $sql = "UPDATE {$this->table} SET $set WHERE {$this->primaryKey} = :id";
+            $data['id'] = $id;
+        }
+
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute($data);
+        
     }
 
     public function find($id): ?object
@@ -59,7 +73,15 @@ class DB
 
     protected function getData(): array
     {
-        throw new \Exception("Method getData() must be implemented in the subclass.");
-    }
+        $fields = get_object_vars($this);
+        $data = array();
+        
 
+        foreach ($fields as $field => $value){
+            if ($field != "pdo" && $field != "table" && $field != "primaryKey"){
+                $data["$field"] = $value;
+            }
+        }
+        return $data;
+    }
 }
