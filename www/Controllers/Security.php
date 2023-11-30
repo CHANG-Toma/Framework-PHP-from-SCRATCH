@@ -14,15 +14,15 @@ class Security{
         $myUser->setLastname("   ChAnG    ");
         $myUser->setEmail("toma11chang@gmail.com");
         $myUser->setPwd("eeee");
-        $myUser->save();
+        //$myUser->save();
 
         //Modification d'un utilisateur
-        $myUser = User::populate(3);
+        //récupère toutes les données de ce user
+        $myUser = User::populate(2);
         if(!empty($myUser)){
             $myUser->setFirstname("Test");
             $myUser->save();
         }
-
 
         new View("Security/login", "back");
     }

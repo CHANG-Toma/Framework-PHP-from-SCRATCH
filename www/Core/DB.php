@@ -31,12 +31,13 @@ class DB
         //Création et execution d'une requête insert SQL
         $childVars = $this->getChlidVars();
         var_dump($childVars);
-        if (empty($this->getId())) {
-            //echo "insert";
+        if (empty($this->getId())) { //si c'est vide
+
             $sql = "INSERT INTO ".$this->table." (".implode(", ", array_keys($childVars)).")
             VALUES (:".implode(", :", array_keys($childVars)).")";
-        }else{
-            //echo "update";
+        }
+        else { //sinon on update
+
             $sql = "UPDATE ".$this->table." SET ";
             foreach ($childVars as $key => $value){
                 $sql .= $key."=:".$key.", ";
