@@ -89,5 +89,5 @@ class User extends \App\Core\DB
         $this->isDeleted = $isDeleted;
     }
 
-    
+
 }

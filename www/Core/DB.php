@@ -14,7 +14,7 @@ class DB
     public function __construct()
     {
         $host = 'mariadb';
-        $db   = 'esgii';
+        $db   = 'esgi';
         $user = 'esgi';
         $pass = 'esgipwd';
         $charset = 'utf8mb4';
@@ -50,7 +50,7 @@ class DB
 
         $stmt = $this->pdo->prepare($sql);
         $stmt->execute($data);
-        
+
     }
 
     public function find($id): ?object
@@ -75,7 +75,7 @@ class DB
     {
         $fields = get_object_vars($this);
         $data = array();
-        
+
 
         foreach ($fields as $field => $value){
             if ($field != "pdo" && $field != "table" && $field != "primaryKey"){

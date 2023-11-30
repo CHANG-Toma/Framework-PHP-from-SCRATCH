@@ -31,7 +31,7 @@ services:
       PMA_USER: esgi
       PMA_PASSWORD: esgipwd
     ports:
-      - "8080:80"
+      - "8181:80"
     depends_on:
       - mariadb
 
