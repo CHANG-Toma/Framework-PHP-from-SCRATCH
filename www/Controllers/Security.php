@@ -8,19 +8,20 @@ class Security{
 
     public function login(): void
     {
+        //Insertion d'un utilisateur
         $myUser = new User();
-        $myUser->setFirstname("Yves");
-        $myUser->setLastname("   SKrZypczYK    ");
-        $myUser->setEmail("Y.skrzypczyk@gmail.com");
-        $myUser->setPwd("Test1234");
+        $myUser->setFirstname("toto");
+        $myUser->setLastname("   ChAnG    ");
+        $myUser->setEmail("toma11chang@gmail.com");
+        $myUser->setPwd("eeee");
         $myUser->save();
 
-        /*
-        $myPage = new Page();
-        $myPage->setTitle("MA super page");
-        $myPage->setDescription("Description de ma super page");
-        $myPage->save();
-        */
+        //Modification d'un utilisateur
+        $myUser = User::populate(3);
+        if(!empty($myUser)){
+            $myUser->setFirstname("Test");
+            $myUser->save();
+        }
 
 
         new View("Security/login", "back");
