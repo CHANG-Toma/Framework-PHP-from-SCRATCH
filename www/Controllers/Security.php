@@ -15,14 +15,7 @@ class Security{
         $myUser->setEmail("Y.skrzypczyk@gmail.com");
         $myUser->setPwd("Test1234");
 
-        $dataARRAY["firstname"] = $myUser->getFirstname();
-        $dataARRAY["lastname"] = $myUser->getLastname();
-        $dataARRAY["email"] = $myUser->getEmail();
-        $dataARRAY["pwd"] = $myUser->getPwd();
-
-        print_r($dataARRAY);
-
-        //$myUser->save("User", $dataARRAY);
+        $myUser->save();
 
         /*
         $myPage = new Page();
