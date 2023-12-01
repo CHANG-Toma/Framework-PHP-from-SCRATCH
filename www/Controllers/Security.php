@@ -19,7 +19,7 @@ class Security
         $myUser->setEmail("toma11chang@gmail.com");
         $myUser->setPwd("eeee");
         //$myUser->setId(5);
-        $myUser->save();
+        //$myUser->save();
 
         // Modifie un utilisateur existant
         $myUser = User::populate(5);

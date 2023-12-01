@@ -22,19 +22,29 @@ class DB
         }
 
         // Détermine le nom de la table en fonction du nom de la classe
+        // Obtient le nom de la classe actuelle
         $table = get_called_class();
+        // Divise le nom de la classe en segments en utilisant le caractère '\' comme séparateur
         $table = explode("\\", $table);
+        // Extrait le dernier élément du tableau, correspondant au nom de la classe sans le namespace
         $table = array_pop($table);
+        // Concatène le préfixe avec le nom de la classe en minuscules et stocke le résultat dans la propriété $this->table
         $this->table = $this->prefix . strtolower($table);
+
     }
 
     /**
      * Obtient les variables enfant de l'objet.
      * @return array
      */
+
+
+    // Récupère les variables de l'objet qui ne sont pas dans la classe parente
     public function getChildVars(): array
     {
-        // Récupère les variables de l'objet qui ne sont pas dans la classe parente
+        //get_object_vars : pour avoir toutes les variables de l'objet en parametre
+        //get_class_vars : permet d'avoir les variables de la classe parente (qui est celle ci)
+        //array_diff_key : différencie les variables de l'objet et du parent
         $vars = array_diff_key(get_object_vars($this), get_class_vars(get_class()));
         return $vars;
     }
@@ -44,9 +54,10 @@ class DB
      */
     public function save(): void
     {
-        // Crée et exécute une requête SQL d'insertion ou de mise à jour
+        //contient toutes les variables de l'objet sauf ceux de la classe parente
         $childVars = $this->getChildVars();
 
+        // Crée et exécute une requête SQL d'insertion ou de mise à jour
         if (empty($this->getId())) { // Si l'ID est vide, effectue une insertion
             $sql = "INSERT INTO " . $this->table . " (" . implode(", ", array_keys($childVars)) . ")
             VALUES (:" . implode(", :", array_keys($childVars)) . ")";
