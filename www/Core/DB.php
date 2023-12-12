@@ -83,6 +83,7 @@ class DB
     public static function populate($id): object|int
     {
         // Récupère un objet par son ID
+        // new static créer une nouvelle instance de la classe actuelle
         return (new static())->getOneBy(["id" => $id], "object");
     }
 
